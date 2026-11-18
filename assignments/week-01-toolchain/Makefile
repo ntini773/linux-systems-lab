@@ -19,7 +19,7 @@ test: all
 
 sanitize:
 	@mkdir -p build
-	$(CC) $(COMMON) -O1 -fno-omit-frame-pointer -fsanitize=address,undefined $(SRC) -o build/bytecount-sanitize
+	$(CC) $(COMMON) -O1 -fno-omit-frame-pointer -fsanitize=address,undefined $(SRC) -o $(BIN)
 	ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 $(PYTHON) -m unittest discover -s tests -p 'test_*.py' -v
 
 clean:
